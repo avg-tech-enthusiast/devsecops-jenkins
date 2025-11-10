@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
+                sh 'java -version'
                 sh 'chmod +x gradlew'
                 sh './gradlew check'
             }
