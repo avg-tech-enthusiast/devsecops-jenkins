@@ -21,9 +21,9 @@ pipeline {
         always {
             archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
             script {
-                def testResults = findFiles(globs: 'build/test-results/test/TEST-*.xml')
-                if (!testResults.isEmpty()) {
-                    junit 'build/test-results/test/*.xml'
+                def testDir = "build/test-results/test"
+                if (fileExists(testDir)) {
+                    junit "${testDir}/*.xml"
                 }
             }
         }
