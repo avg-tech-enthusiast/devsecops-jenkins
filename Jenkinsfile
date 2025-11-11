@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        kdl 'JDK8'
+    }
     stages {
         stage('Test') {
             steps {
