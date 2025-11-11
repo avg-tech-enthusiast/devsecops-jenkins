@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+unset JAVA_OPTS
+unset GRADLE_OPTS
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 ##############################################################################

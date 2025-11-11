@@ -4,23 +4,23 @@ pipeline {
         jdk 'JDK8'
     }
     stages {
-        stage('Check Environment') {
+        stage('Build') {
             steps {
-                sh 'echo $JAVA_OPTS'
-                sh 'echo $GRADLE_OPTS'
+                sh 'chmod +x gradlew'
+                sh './gradlew build --no-daemon'
             }
         }
         stage('Test') {
             steps {
-                sh 'java -version'
                 sh 'chmod +x gradlew'
-                sh './gradlew check'
+                sh './gradlew test --no-daemon'
             }
         }
     }
     post {
         always {
-            junit 'build/reports/**/*.xml'
+            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+            junit 'build/test-results/test/*.xml'
         }
     }
 }
