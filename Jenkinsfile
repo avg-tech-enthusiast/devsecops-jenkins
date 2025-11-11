@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    // tools {
-    //     jdk 'JDK8'
-    // }
+    tools {
+        jdk 'JDK8'
+    }
     stages {
         stage('Build') {
             steps {
@@ -24,7 +24,7 @@ pipeline {
             //     def testDir = "build/test-results/test"
             //     if (fileExists(testDir)) {
             //         junit "${testDir}/*.xml"
-            //     }
+            //     }    
                 junit 'build/test-results.xml'
         }       
     }
