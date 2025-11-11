@@ -20,7 +20,12 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
-            junit 'build/test-results/test/*.xml'
+            // Only try to archive test results if the file exists
+            dir('build/test-results/test') {
+                if (fileExists('TEST-*.xml')) {
+                    junit 'build/test-results/test/*.xml'
+                }
+            }
         }
     }
 }
