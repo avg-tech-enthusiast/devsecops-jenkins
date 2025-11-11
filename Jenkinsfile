@@ -26,7 +26,6 @@ pipeline {
             //         junit "${testDir}/*.xml"
             //     }
                 junit 'build/reports/**/*.xml'
-            }
-        }
+        }       
     }
 }
