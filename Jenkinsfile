@@ -1,15 +1,15 @@
 pipeline {
     agent any
-    tools {
-        jdk 'JDK8'
-    }
+    // tools {
+    //     jdk 'JDK8'
+    // }
     stages {
-        stage('Build') {
-            steps {
-                sh 'chmod +x gradlew'
-                sh './gradlew build --no-daemon'
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         sh 'chmod +x gradlew'
+        //         sh './gradlew build --no-daemon'
+        //     }
+        // }
         stage('Test') {
             steps {
                 sh 'chmod +x gradlew'
@@ -19,12 +19,13 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
-            script {
-                def testDir = "build/test-results/test"
-                if (fileExists(testDir)) {
-                    junit "${testDir}/*.xml"
-                }
+            // archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+            // script {
+            //     def testDir = "build/test-results/test"
+            //     if (fileExists(testDir)) {
+            //         junit "${testDir}/*.xml"
+            //     }
+                junit 'build/reports/**/*.xml'
             }
         }
     }
