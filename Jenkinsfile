@@ -25,7 +25,7 @@ pipeline {
             //     if (fileExists(testDir)) {
             //         junit "${testDir}/*.xml"
             //     }
-                junit 'build/reports/test-results.xml'
+                junit 'build/test-results.xml'
         }       
     }
 }
