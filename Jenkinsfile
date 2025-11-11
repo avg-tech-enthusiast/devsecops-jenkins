@@ -4,12 +4,12 @@ pipeline {
     //     jdk 'JDK8'
     // }
     stages {
-        // stage('Build') {
-        //     steps {
-        //         sh 'chmod +x gradlew'
-        //         sh './gradlew build --no-daemon'
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                sh 'chmod +x gradlew'
+                sh './gradlew build --no-daemon'
+            }
+        }
         stage('Test') {
             steps {
                 sh 'chmod +x gradlew'
