@@ -20,9 +20,9 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
-            // Only try to archive test results if the file exists
-            dir('build/test-results/test') {
-                if (fileExists('TEST-*.xml')) {
+            script {
+                def testResults = findFiles(globs: 'build/test-results/test/TEST-*.xml')
+                if (!testResults.isEmpty()) {
                     junit 'build/test-results/test/*.xml'
                 }
             }
